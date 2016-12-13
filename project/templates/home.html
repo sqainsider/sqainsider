@@ -6,26 +6,29 @@
 
 		<script type = "text/javascript" src = "../static/js/jquery-3.1.1.min.js"></script>
       	<script type = "text/javascript" 
-         src = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+         	src = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
       	<script type = "text/javascript" src = "../static/js/scripts/custom.js"></script>
  	</head>
 
 	<body>
 		<iframe name="iframe_header" aligh=top height="60" width="100%" frameborder="0" scrolling="no" src="{{ url_for('users.top') }}" style="background-color:#A52A2A"> </iframe>
 		<iframe name ="iframe_side" align=left width="23%" height="700" frameborder="1" scrolling="yes" src="{{ url_for('users.login') }}" style="background-color:#FFF8DC"></iframe>
-		<iframe id="iframe_content" height="500px" width="76.5%" align=right frameborder="1" scrolling = "yes" src= "{{url_for('users.register') }}" style="background-color:#FFF8DC"></iframe>
-		<iframe id="iframe_footer" height="250px" width="76.5%" align=right frameborder="1" scrolling = "yes" src= "{{url_for('users.register') }}" style="background-color:#F0FFF0"></iframe>
+		<iframe id="iframe_content" height="500px" width="76.5%" align=right frameborder="1" scrolling = "yes" src= "{{url_for('users.register') }}"	style="background-color:#FFF8DC"></iframe>
+		<iframe id="iframe_footer" height="250px" width="76.5%" align=right frameborder="1" scrolling = "yes" src= "{{url_for('users.register') }}" 	style="background-color:#F0FFF0"></iframe>
 
 	
 		<div class="page">
 			{% for message in get_flashed_messages() %}
 				<div class="flash">{{message}}</div>
 			{% endfor %}
+			
 			{% if error %}
 				<div class="error"><strong>Error:</strong> {{error}}</div>
 			{% endif %}
 			<br>
+			
 			{% block content %}
+				<!-- inject content from other html-->
 			{% endblock %}
 		</div>
 	</body>
