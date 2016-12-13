@@ -1,0 +1,20 @@
+{% extends "_base.html" %}
+{% block content %}
+
+	
+	<h2>Welcome to the my SQA Insider!</h2>
+	<h3>You have sucessfully logged in.</h3>
+	<br>
+	<p><em> Need an account? </em><a href="/logout">Logout!!!</a></p>
+
+    <button onclick="loadPages()">Click Me</button>
+    <script>
+        function loadPages(){
+            var loc = "xhttp://www.w3schools.com/";
+            parent.document.getElementById('iframe_content').setAttribute('src', "http://127.0.0.1:5000/tasks/");
+        }
+
+    </script>
+
+
+{% endblock %}

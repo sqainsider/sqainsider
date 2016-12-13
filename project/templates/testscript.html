@@ -1,0 +1,97 @@
+{% extends "_base.html" %}
+{% block content %}
+
+  
+<h1>Test Case</h1>
+<br>
+
+<div class="testcase">
+  <h3>Test Cases:</h3>
+  <form action="{{ url_for('tasks.testcase') }}" method="post">
+      {{ form.csrf_token }}
+      <p>
+      {{ form.run(placeholder="run") }}
+        <span class="error">
+          {% if form.run.errors %}
+            {% for error in form.name.errors %}
+              {{ error }}
+            {% endfor %}
+          {% endif %}
+        </span>
+      </p>
+
+      <p>
+      {{ form.due_date(placeholder="due date") }}
+        <span class="error">
+          {% if form.due_date.errors %}
+            {% for error in form.due_date.errors %}
+              {{ error }}
+            {% endfor %}
+          {% endif %}
+        </span>
+      </p>
+      
+      <p>
+      {{ form.priority.label }}
+      {{ form.priority }}
+        <span class="error">
+          {% if form.priority.errors %}
+            {% for error in form.priority.errors %}
+              {{ error }}
+            {% endfor %}
+          {% endif %}
+        </span>
+      </p>
+      
+      <p><input class="btn btn-default" type="submit" value="Submit"></p>
+  </form>
+</div>
+
+<div class="entries">
+  <br>
+  <br>
+  <h2>Test Scripts:</h2>
+  <div class="datagrid">
+    <table>
+      <thead>
+        <tr>
+          <th width="50px"><strong>Run</strong></th>
+          <th width="50px"><strong>Case ID</strong></th>
+          <th width="30px"><strong>Seq No</strong></th>
+          <th width="50px"><strong>Status</strong></th>
+          <th width="50px"><strong>Page</strong></th>
+          <th width="50px"><strong>Text/Label</strong></th>
+          <th width="30px"><strong>Value</strong></th>
+          <th width="50px"><strong>Verifications</strong></th>
+          <th width="50px"><strong>Conditions</strong></th>
+          <th width="50px"><strong>Comments</strong></th>
+          <th width="50px"><strong>Element ID</strong></th>
+          <th width="30px"><strong>identifier</strong></th>
+          <th width="30px"><strong>Method</strong></th>
+          <th width="30px"><strong>Action</strong></th>
+        </tr>
+      </thead>
+      {% for step in teststeps %}
+        <tr>
+          <td width="50px">{{task.run}}</td>
+          <td width="50px">{{task.Case ID}}</td>
+          <td width="30px">{{task.Seq No}}</td>
+          <td width="50px">{{task.Status}}</td>
+          <td width="50px">{{task.page}}</td>
+          <td width="30px">{{task.label}}</td>
+          <td width="50px">{{task.value}}</td>
+          <td width="50px">{{task.verifications}}</td>
+          <td width="50px">{{task.conditions}}</td>
+          <td width="50px">{{task.comments}}</td>
+          <td width="50px">{{task.elementid}}</td>
+          <td width="30px">{{task.identifier}}</td>
+          <td width="30px">{{task.method}}</td>
+          <td width="30px">{{task.action}}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+<br>
+<br>
+{% endblock %}
